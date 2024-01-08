@@ -1,6 +1,6 @@
 import {ref, watch} from 'vue';
 import { Planet, Music, VideoOne, Fm, Like, Computer, DownloadThree, PlayTwo } from '@icon-park/vue-next';
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 export function useMenu () {
 
@@ -80,19 +80,20 @@ export function useMenu () {
 
   const route = useRoute();
 
+  const router = useRouter()
+
   const currentKey = ref(route.meta.menu)
 
   console.log(currentKey, 'currentKey')
 
   watch(
-    ()=> route.meta.menu,
+    () => route.meta.menu, //返回一个getter函数
     (menu) => {
-      currentKey = menu
+      currentKey.value = menu
     }
   )
 
-  const click = async(menu: IMenu)=>{
-    debugger
+  const click = async(menu: IMenu) => {
     await router.push({name: menu.key, replace: true})
   }
 
