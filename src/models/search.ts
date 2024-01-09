@@ -8,3 +8,11 @@ export interface SearchHotDetail {
 	url: string;
 	alg: string
 }
+
+export interface SearchSuggest {
+	albums: SearchSuggestAlbums[];
+	artists: SearchSuggestArtists[];
+	songs: SearchSuggestSongs[];
+	playlists: SearchSuggestPlaylists[];
+	order: string[];
+}
