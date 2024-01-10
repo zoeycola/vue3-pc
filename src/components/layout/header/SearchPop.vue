@@ -1,9 +1,10 @@
 <template>
   <el-popover
-    popper-style="max-width: auto"
-    v-model:visible="showSearchView"
+    popper-style="max-width: auto;padding:0;"
+    trigger="click"
     width="250px"
-  >
+    >
+    <!-- v-model:visible="showSearchView" -->
     <template #reference>
       <ElInput
         v-model="searchKeyword"
@@ -12,6 +13,7 @@
         clearable
         @focus="showSearchView = true"
         @focusout="showSearchView = false"
+        @input="searchInput"
       />
     </template>
     <div class="h-96">
@@ -23,7 +25,7 @@
               <div
                 v-for="(item, index) in searchHot"
                 :key="item.searchWord"
-                class="py-2.5 px-2.5 hover-text cursor-pointer flex justify-between items-center text-xs"
+                class="py-2.5 px-2.5 hover:text-emerald-400  cursor-pointer flex justify-between items-center text-xs"
                 @click="hotClick(item.searchWord)"
               >
                 <div>
@@ -117,10 +119,13 @@ const getTitle = (name: string) => {
 
 const searchHot = ref<SearchHotDetail[]>([]);
 
+const searchInput = _.debounce((value: string | number) => suggest(), 500, {'maxWait': 1000})
+
 onMounted(async () => {
   searchHot.value = await useSearchHotDetail();
   console.log(searchHot.value, "searchHot.value");
 });
+
 </script>
 
 <style lang="scss"></style>

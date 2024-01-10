@@ -8,9 +8,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElBadge: typeof import('element-plus/es')['ElBadge']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
+    ElSlider: typeof import('element-plus/es')['ElSlider']
+    Footer: typeof import('./src/components/layout/footer/Footer.vue')['default']
     Header: typeof import('./src/components/layout/header/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
@@ -21,6 +24,7 @@ declare module 'vue' {
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
     Menu: typeof import('./src/components/layout/menu/Menu.vue')['default']
     MenuList: typeof import('./src/components/layout/menu/MenuList.vue')['default']
+    PlayVolumnSlider: typeof import('./src/components/layout/footer/PlayVolumnSlider.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchPop: typeof import('./src/components/layout/header/SearchPop.vue')['default']
